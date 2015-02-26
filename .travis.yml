@@ -12,3 +12,10 @@ env:
 
 script:
   - ./node_modules/.bin/gulp
+
+asfter_success:
+  - git clone git@github.com:skunenieki/skunenieki.github.io.git
+  - cp -r public/* skunenieki.github.io/
+  - git add --all .
+  - git commit --allow-empty -m 'Updating to PUT_SHA_HERE'
+  - git push --quiet origin master
