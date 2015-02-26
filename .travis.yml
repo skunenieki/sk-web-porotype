@@ -10,10 +10,13 @@ env:
   global:
     secure: "scuUw9QoExNIzniMi6R36LqfwDjmKp6BKrmu/U5DFbic+QXojRrrg5gC8bCailiRpmmIrJYsUpOvVLQANnXeAvk52b6V3TDrQLQ+cYhr13pLYoDb17gkQlgxNeM1Bhxm0MFE+s/j5mcp19AzzhGmALkDx9o3eLTZYLDibKdcz0o="
 
+install:
+  - npm install
+
 script:
   - ./node_modules/.bin/gulp
 
-asfter_success:
+after_success:
   - git clone git@github.com:skunenieki/skunenieki.github.io.git
   - cp -r public/* skunenieki.github.io/
   - git add --all .
