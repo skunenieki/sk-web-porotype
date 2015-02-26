@@ -17,13 +17,13 @@ script:
   - ./node_modules/.bin/gulp
 
 after_success:
-  - git clone https://$GIT_NAME:$GH_TOKEN@github.com/skunenieki/skunenieki.github.io.git
+  - "git clone https://$GIT_NAME:$GH_TOKEN@github.com/skunenieki/skunenieki.github.io.git"
   - cp -r public/* skunenieki.github.io/
   - export C=`git rev-parse --verify HEAD`
   - cd skunenieki.github.io
   - git status
-  - git config user.name "$GIT_NAME"
-  - git config user.email "$GIT_EMAIL"
+  - git config user.name "Martins Sipenko"
+  - git config user.email "martins.sipenko@gmail.com"
   - git config push.default simple
   - git add --all .
   - git commit --allow-empty -m "Updating to $TRAVIS_REPO_SLUG@#$C"
