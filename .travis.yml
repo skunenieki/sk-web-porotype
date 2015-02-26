@@ -17,8 +17,13 @@ script:
   - ./node_modules/.bin/gulp
 
 after_success:
-  - git clone https://github.com/skunenieki/skunenieki.github.io.git
+  - git clone https://$GIT_NAME:$GH_TOKEN@github.com/skunenieki/skunenieki.github.io.git
   - cp -r public/* skunenieki.github.io/
+  - git status
   - git add --all .
-  - git commit --allow-empty -m 'Updating to PUT_SHA_HERE'
+  - git config --global user.name $GIT_NAME
+  - git config --global user.email $GIT_EMAIL
+  - git config --global push.default simple
+  - export C=`git rev-parse --verify HEAD`
+  - git commit --allow-empty -m "Updating to $TRAVIS_REPO_SLUG@#$C"
   - git push --quiet origin master
