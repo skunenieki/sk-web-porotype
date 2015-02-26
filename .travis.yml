@@ -1,0 +1,14 @@
+language: node_js
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+env:
+  global:
+    secure: "scuUw9QoExNIzniMi6R36LqfwDjmKp6BKrmu/U5DFbic+QXojRrrg5gC8bCailiRpmmIrJYsUpOvVLQANnXeAvk52b6V3TDrQLQ+cYhr13pLYoDb17gkQlgxNeM1Bhxm0MFE+s/j5mcp19AzzhGmALkDx9o3eLTZYLDibKdcz0o="
+
+script:
+  - ./node_modules/.bin/gulp
