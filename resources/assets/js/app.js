@@ -2,6 +2,13 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
+var moment = require('moment');
+require('moment/locale/lv');
+// require('./locale');
+require('./twitter-fetcher');
+
+moment.locale('lv');
+
 (function($) {
 
     $.fn.parallax = function(options) {
@@ -88,9 +95,63 @@ $('.bg-1').parallax({
     }
 })($);
 
+// <li>
+//     <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+//     <div class="timeline-panel">
+//         <div class="timeline-body">
+//             <p>Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga.</p>
+//         </div>
+//         <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small></p>
+//     </div>
+// </li>
 
-console.log('loaded');
+twitterFetcher.fetch({
+    id: '579257548878061568',
+    domId: 'timeline',
+    maxTweets: 5,
+    enableLinks: true,
+    showUser: true,
+    showInteraction: false,
+    customCallback: function(tweets) {
+        var n = 0;
+        var x = tweets.length;
+        var element = document.getElementById('timeline');
+        var html = '';
+        var el = document.createElement('div');
+        while (n < x) {
+            el.innerHTML = tweets[n];
 
+            // console.log(el.innerHTML);
 
+            html += '<li class="' + (n%2 === 0 ? 'timeline-inverted' : '') + '">';
+            html += '<div class="info timeline-badge"><i class="fa fa-twitter"></i></div>';
+            html += '<div class="timeline-panel">';
+            html += '<div class="timeline-user-icon">';
+            html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
+            html += '<img src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src + '"/>';
+            html += '</a>';
+            html += '</div>';
+            html += '<div class="timeline-body">';
+            html += '<div class="timeline-user-name">';
+            html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
+            html += el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('span')[1].innerHTML;
+            html += '</a>';
+            html += '</div>';
+            html += '<p>' + el.getElementsByClassName('tweet')[0].innerHTML + '</p>';
+            html += '</div>';
+            html += '<div class="timline-time"><small class="text-muted"><i class="fa fa-clock-o"></i> ';
+            html += el.getElementsByClassName('timePosted')[0].innerHTML;
+            html += '</small></div>';
+            html += '</div>';
+            html += '</li>';
 
-
+            n++;
+        }
+        element.innerHTML = html;
+    },
+    dateFunction: function(newDate, datetimeText) {
+        // console.log(moment.format(newDate));
+        // console.log(moment.format(datetimeText));
+        return moment(newDate).format('LLL');
+    }
+});
