@@ -25,6 +25,6 @@ after_success:
   - git config user.email "martins.sipenko@gmail.com"
   - git config push.default simple
   - git add --all .
-  - git commit --allow-empty -m "Updating to $TRAVIS_REPO_SLUG@#$C"
+  - git commit --allow-empty -m "Updating to $TRAVIS_REPO_SLUG@$C."
   - git push --quiet origin master
   - cd -
