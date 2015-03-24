@@ -15,7 +15,7 @@ require('./timecircles');
 
 
 
-// $.backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+$.backstretch('https://pbs.twimg.com/profile_banners/81058554/1397729260/1500x500');
 
 $(window).load(function() {
     $('#status').fadeOut();
