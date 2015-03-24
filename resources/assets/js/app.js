@@ -12,30 +12,24 @@ require('./twitter-fetcher');
 require('./timecircles');
 
 
-
-
-
 $.backstretch('https://pbs.twimg.com/profile_banners/81058554/1397729260/1500x500');
+var countdown =  $('#countdown');
 
 $(window).load(function() {
-    $('#status').fadeOut();
     $('#preloader').delay(350).fadeOut('slow');
-    $('body').delay(350).css({'overflow':'visible'});
+    $('section').show();
+    // // $('body').delay(350).css({'overflow':'visible'});
+    createTimeCicles();
+    countdown.delay(350).addClass('animated bounceIn');
 });
 
-
-var countdown =  $('#countdown');
-createTimeCicles();
 $(window).on('resize', function() {
+    console.log('aaaa');
     countdown.TimeCircles().destroy();
     createTimeCicles();
-    countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
-        countdown.removeClass('animated bounceIn');
-    });
 });
 
 function createTimeCicles() {
-    countdown.addClass('animated bounceIn');
     countdown.TimeCircles({
         fg_width: 0.013,
         bg_width: 0.6,
@@ -52,53 +46,7 @@ function createTimeCicles() {
     $('.textDiv_Hours h4').html('Stundas');
     $('.textDiv_Minutes h4').html('Minūtes');
     $('.textDiv_Seconds h4').html('Sekundes');
-    countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
-        countdown.removeClass('animated bounceIn');
-    });
 }
-
-(function($) {
-
-    $.fn.parallax = function(options) {
-
-        var windowHeight = $(window).height();
-
-        // Establish default settings
-        var settings = $.extend({
-            speed        : 0.15
-        }, options);
-
-        // Iterate over each object in collection
-        return this.each( function() {
-
-            // Save a reference to the element
-            var $this = $(this);
-
-            // Set up Scroll Handler
-            $(document).scroll(function(){
-
-                    var scrollTop = $(window).scrollTop();
-                        var offset = $this.offset().top;
-                        var height = $this.outerHeight();
-
-            // Check if above or below viewport
-            if (offset + height <= scrollTop || offset >= scrollTop + windowHeight) {
-                return;
-            }
-
-            var yBgPosition = Math.round((offset - scrollTop) * settings.speed);
-
-                 // Apply the Y Background Position to Set the Parallax Effect
-                $this.css('background-position', 'center ' + yBgPosition + 'px');
-
-            });
-        });
-    }
-}(jQuery));
-
-$('.intro').parallax({
-    speed : 0.9
-});
 
 twitterFetcher.fetch({
     id: '579257548878061568',
