@@ -6,8 +6,41 @@ var moment = require('moment');
 require('moment/locale/lv');
 // require('./locale');
 require('./twitter-fetcher');
+require('./timecircles');
 
 moment.locale('lv');
+
+
+var countdown =  $('#countdown');
+
+createTimeCicles();
+
+$(window).on('resize', function() {
+    countdown.TimeCircles().destroy();
+    createTimeCicles();
+    // countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
+    //     countdown.removeClass('animated bounceIn');
+    // });
+});
+
+function createTimeCicles() {
+    // countdown.addClass('animated bounceIn');
+    countdown.TimeCircles({
+        fg_width: 0.013,
+        bg_width: 0.6,
+        circle_bg_color: '#ffffff',
+        text_size: 0.09,
+        time: {
+            Days: {color: '#5bc0de'},
+            Hours: {color: '#5bc0de'},
+            Minutes: {color: '#5bc0de'},
+            Seconds: {color: '#5bc0de'},
+        }
+    });
+    // countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
+    //     countdown.removeClass('animated bounceIn');
+    // });
+}
 
 (function($) {
 
@@ -95,16 +128,6 @@ $('.bg-1').parallax({
     }
 })($);
 
-// <li>
-//     <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-//     <div class="timeline-panel">
-//         <div class="timeline-body">
-//             <p>Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga.</p>
-//         </div>
-//         <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small></p>
-//     </div>
-// </li>
-
 twitterFetcher.fetch({
     id: '579257548878061568',
     domId: 'timeline',
@@ -125,23 +148,23 @@ twitterFetcher.fetch({
 
             html += '<li class="' + (n%2 === 0 ? 'timeline-inverted' : '') + '">';
             html += '<div class="info timeline-badge"><i class="fa fa-twitter"></i></div>';
-            html += '<div class="timeline-panel">';
-            html += '<div class="timeline-user-icon">';
+            html += '<div class="timeline-panel media">';
+            html += '<div class="media-left">';
             html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
-            html += '<img src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src + '"/>';
+            html += '<img class="media-object" src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src + '"/>';
             html += '</a>';
             html += '</div>';
-            html += '<div class="timeline-body">';
-            html += '<div class="timeline-user-name">';
+            html += '<div class="timeline-body media-body">';
+            html += '<h4 class="media-heading">';
             html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
             html += el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('span')[1].innerHTML;
             html += '</a>';
-            html += '</div>';
+            html += '</h4>';
             html += '<p>' + el.getElementsByClassName('tweet')[0].innerHTML + '</p>';
-            html += '</div>';
             html += '<div class="timline-time"><small class="text-muted"><i class="fa fa-clock-o"></i> ';
             html += el.getElementsByClassName('timePosted')[0].innerHTML;
             html += '</small></div>';
+            html += '</div>';
             html += '</div>';
             html += '</li>';
 
@@ -150,8 +173,6 @@ twitterFetcher.fetch({
         element.innerHTML = html;
     },
     dateFunction: function(newDate, datetimeText) {
-        // console.log(moment.format(newDate));
-        // console.log(moment.format(datetimeText));
         return moment(newDate).format('LLL');
     }
 });
