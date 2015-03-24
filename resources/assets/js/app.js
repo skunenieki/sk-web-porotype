@@ -2,44 +2,59 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
+require('./../../../bower_components/jquery-backstretch/jquery.backstretch.js');
+
 var moment = require('moment');
 require('moment/locale/lv');
-// require('./locale');
+moment.locale('lv');
+
 require('./twitter-fetcher');
 require('./timecircles');
 
-moment.locale('lv');
+
+
+
+
+// $.backstretch("http://dl.dropbox.com/u/515046/www/garfield-interior.jpg");
+
+$(window).load(function() {
+    $('#status').fadeOut();
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+});
 
 
 var countdown =  $('#countdown');
-
 createTimeCicles();
-
 $(window).on('resize', function() {
     countdown.TimeCircles().destroy();
     createTimeCicles();
-    // countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
-    //     countdown.removeClass('animated bounceIn');
-    // });
+    countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
+        countdown.removeClass('animated bounceIn');
+    });
 });
 
 function createTimeCicles() {
-    // countdown.addClass('animated bounceIn');
+    countdown.addClass('animated bounceIn');
     countdown.TimeCircles({
         fg_width: 0.013,
         bg_width: 0.6,
         circle_bg_color: '#ffffff',
         text_size: 0.09,
         time: {
-            Days: {color: '#5bc0de'},
-            Hours: {color: '#5bc0de'},
-            Minutes: {color: '#5bc0de'},
-            Seconds: {color: '#5bc0de'},
+            Days: {color: '#ccc'},
+            Hours: {color: '#ccc'},
+            Minutes: {color: '#ccc'},
+            Seconds: {color: '#ccc'},
         }
     });
-    // countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
-    //     countdown.removeClass('animated bounceIn');
-    // });
+    $('.textDiv_Days h4').html('Dienas');
+    $('.textDiv_Hours h4').html('Stundas');
+    $('.textDiv_Minutes h4').html('Minūtes');
+    $('.textDiv_Seconds h4').html('Sekundes');
+    countdown.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function() {
+        countdown.removeClass('animated bounceIn');
+    });
 }
 
 (function($) {
@@ -81,52 +96,9 @@ function createTimeCicles() {
     }
 }(jQuery));
 
-$('.bg-1').parallax({
-    speed : 0.45
+$('.intro').parallax({
+    speed : 0.9
 });
-
-(function($) {
-    /**
-    * Set your date here  (YEAR, MONTH (0 for January/11 for December), DAY, HOUR, MINUTE, SECOND)
-    * according to the GMT+0 Timezone
-    **/
-    var launch = new Date(2015, 07, 8, 12, 00);
-    /**
-    * The script
-    **/
-    var days = $('#days h1');
-    var hours = $('#hours h1');
-    var minutes = $('#minutes h1');
-    var seconds = $('#seconds h1');
-
-    setDate();
-    function setDate(){
-        var now = new Date();
-        if( launch < now ){
-            days.html('0');
-            hours.html('0');
-            minutes.html('0');
-            seconds.html('0');
-        }
-        else{
-            var s = -now.getTimezoneOffset()*60 + (launch.getTime() - now.getTime())/1000;
-            var d = Math.floor(s/86400);
-            days.html(d);
-            s -= d*86400;
-
-            var h = Math.floor(s/3600);
-            hours.html(h);
-            s -= h*3600;
-
-            var m = Math.floor(s/60);
-            minutes.html(m);
-
-            s = Math.floor(s-m*60);
-            seconds.html(s);
-            setTimeout(setDate, 1000);
-        }
-    }
-})($);
 
 twitterFetcher.fetch({
     id: '579257548878061568',
@@ -146,15 +118,15 @@ twitterFetcher.fetch({
 
             // console.log(el.innerHTML);
 
-            html += '<li class="' + (n%2 === 0 ? 'timeline-inverted' : '') + '">';
-            html += '<div class="info timeline-badge"><i class="fa fa-twitter"></i></div>';
-            html += '<div class="timeline-panel media">';
+            html += '<li class="' + (n%2 === 0 ? 'pos-right' : 'pos-left') + ' clearfix">';
+            html += '<div class="timeline-badge"><i class="fa fa-twitter"></i></div>';
+            html += '<div class="media">';
             html += '<div class="media-left">';
             html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
             html += '<img class="media-object" src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src + '"/>';
             html += '</a>';
             html += '</div>';
-            html += '<div class="timeline-body media-body">';
+            html += '<div class="media-body">';
             html += '<h4 class="media-heading">';
             html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
             html += el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('span')[1].innerHTML;

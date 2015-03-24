@@ -11,9 +11,10 @@ before_install:
 
 install:
   - npm install
+  - ./node_modules/.bin/bower install
 
 script:
-  - ./node_modules/.bin/gulp
+  - ./node_modules/.bin/gulp --production
 
 after_success:
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./after_success.sh
