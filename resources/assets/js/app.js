@@ -24,7 +24,6 @@ $(window).load(function() {
 });
 
 $(window).on('resize', function() {
-    console.log('aaaa');
     countdown.TimeCircles().destroy();
     createTimeCicles();
 });
