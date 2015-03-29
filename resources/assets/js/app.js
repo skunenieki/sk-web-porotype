@@ -14,7 +14,6 @@ var countdown =  $('#countdown');
 $(window).load(function() {
     $('#preloader').delay(350).fadeOut('slow');
     $('section').show();
-    // // $('body').delay(350).css({'overflow':'visible'});
     createTimeCicles();
     countdown.delay(350).addClass('animated bounceIn');
 });
