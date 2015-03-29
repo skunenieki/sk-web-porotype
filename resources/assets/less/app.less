@@ -1,5 +1,6 @@
 @import "../../../node_modules/font-awesome/less/font-awesome";
 @import "../../../node_modules/bootstrap/less/bootstrap";
+@import "../../../bower_components/retina.js/src/retina";
 @import (inline) "../../../bower_components/animate.css/animate.css";
 
 .browserupgrade {
@@ -54,7 +55,9 @@ section {
 section.intro {
     height: 550px;
     padding-top: 70px;
-    background: url('/img/bg.jpg') no-repeat center center fixed;
+    .at2x('/img/bg.jpg', cover);
+    background-repeat: no-repeat;
+    background-position: center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
