@@ -154,8 +154,8 @@ section.timeline {
             .timeline-badge {
                 position: absolute;
                 left: 25px;
-                height: 50px;
-                width: 50px;
+                height: 30px; // 50
+                width: 30px; // 50
                 border-top-right-radius: 50%;
                 border-top-left-radius: 50%;
                 border-bottom-right-radius: 50%;
@@ -164,12 +164,13 @@ section.timeline {
                 margin-left: -25px;
                 text-align: center;
                 color: #fff;
-                line-height: 55px;
+                line-height: 32px; // 55
                 font-size: 1.4em;
-                top: 16px;
+                top: 26px; //16
+                z-index: 2;
             }
 
-            .media {
+            .message {
                 float: right;
                 width: 85%;
                 background-color: #fff;
@@ -179,19 +180,31 @@ section.timeline {
                 border-radius: 4px;
                 border: 1px solid #d4d4d4;
                 box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+                margin-top: 15px;
             }
 
-            .media:before {
-                left: -12px;
-                border-color: transparent red transparent transparent;
-                content: '';
+            .message:before {
                 position: absolute;
-                top: 34px;
-                width: 0;
-                height: 0;
-                content: '';
-                border-style: solid;
-                border-width: 6px;
+                top: 11px;
+                left: -15px;
+                display: inline-block;
+                border-top: 15px solid transparent;
+                border-left: 0 solid #ccc;
+                border-right: 15px solid #ccc;
+                border-bottom: 15px solid transparent;
+                content: ' ';
+            }
+
+            .message:after {
+                position: absolute;
+                top: 12px;
+                left: -14px;
+                display: inline-block;
+                border-top: 14px solid transparent;
+                border-left: 0px solid #fff;
+                border-right: 14px solid #fff;
+                border-bottom: 14px solid transparent;
+                content: ' ';
             }
         }
     }
@@ -203,7 +216,7 @@ section.timeline {
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 25px;
+        left: 15px;
         margin-left: -1.5px;
     }
 
@@ -215,26 +228,45 @@ section.timeline {
         ul > li {
             .timeline-badge {
                 left: 50%;
+                height: 50px;
+                width: 50px;
+                line-height: 55px;
+                top: 16px;
             }
 
-            .media {
+            .message {
                 width: 45%;
             }
         }
 
-        ul > li.pos-left > .media {
+        ul > li.pos-left > .message {
             float: left;
+        }
+
+
+        ul > li.pos-left > .message:before {
+            border-right-width: 0;
+            border-left-width: 15px;
+            right: -15px;
+            left: auto;
+        }
+
+        ul > li.pos-left > .message:after {
+            border-left-width: 14px;
+            border-right-width: 0;
+            right: -14px;
+            left: auto;
         }
     }
 
     @media (min-width: @screen-md-min) {
-        ul > li .media {
+        ul > li .message {
             width: 46%;
         }
     }
 
     @media (min-width: @screen-lg-min) {
-        ul > li .media {
+        ul > li .message {
             width: 47%;
         }
     }

@@ -67,7 +67,7 @@ twitterFetcher.fetch({
 
             html += '<li class="' + (n%2 === 0 ? 'pos-right' : 'pos-left') + ' clearfix">';
             html += '<div class="timeline-badge"><i class="fa fa-twitter"></i></div>';
-            html += '<div class="media">';
+            html += '<div class="message"><div class="media">';
             html += '<div class="media-left">';
             html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
             html += '<img class="media-object" src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src + '"/>';
@@ -83,6 +83,7 @@ twitterFetcher.fetch({
             html += '<div class="timline-time"><small class="text-muted"><i class="fa fa-clock-o"></i> ';
             html += el.getElementsByClassName('timePosted')[0].innerHTML;
             html += '</small></div>';
+            html += '</div>';
             html += '</div>';
             html += '</div>';
             html += '</li>';
