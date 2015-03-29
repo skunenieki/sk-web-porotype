@@ -2,6 +2,8 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
+// require('bootstrap/js/collapse');
+
 var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
@@ -12,6 +14,7 @@ require('./timecircles');
 var countdown =  $('#countdown');
 
 $(window).load(function() {
+    $('#preloader .spinner').hide();
     $('#preloader').delay(350).fadeOut('slow');
     $('section').show();
     createTimeCicles();
