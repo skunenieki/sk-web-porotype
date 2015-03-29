@@ -65,7 +65,7 @@ twitterFetcher.fetch({
             html += '<div class="message"><div class="media">';
             html += '<div class="media-left">';
             html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
-            html += '<img class="media-object" src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src + '"/>';
+            html += '<img class="media-object" src="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0].src.replace('normal', '200x200') + '"/>';
             html += '</a>';
             html += '</div>';
             html += '<div class="media-body">';
