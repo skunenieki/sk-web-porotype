@@ -2,8 +2,6 @@ var $ = require('jquery');
 window.jQuery = $;
 window.$ = $;
 
-require('./../../../bower_components/jquery-backstretch/jquery.backstretch.js');
-
 var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
@@ -11,8 +9,6 @@ moment.locale('lv');
 require('./twitter-fetcher');
 require('./timecircles');
 
-
-$.backstretch('https://pbs.twimg.com/profile_banners/81058554/1397729260/1500x500');
 var countdown =  $('#countdown');
 
 $(window).load(function() {
@@ -79,10 +75,10 @@ twitterFetcher.fetch({
             html += el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('span')[1].innerHTML;
             html += '</a>';
             html += '</h4>';
-            html += '<p>' + el.getElementsByClassName('tweet')[0].innerHTML + '</p>';
             html += '<div class="timline-time"><small class="text-muted"><i class="fa fa-clock-o"></i> ';
             html += el.getElementsByClassName('timePosted')[0].innerHTML;
             html += '</small></div>';
+            html += '<p>' + el.getElementsByClassName('tweet')[0].innerHTML + '</p>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
