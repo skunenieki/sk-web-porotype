@@ -1,6 +1,5 @@
 var elixir = require('laravel-elixir');
 require('laravel-elixir-icons');
-require('laravel-elixir-imagemin');
 
 elixir(function(mix) {
     mix.icons({
