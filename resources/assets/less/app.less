@@ -2,6 +2,7 @@
 @import "../../../node_modules/bootstrap/less/bootstrap";
 @import "../../../bower_components/retina.js/src/retina";
 @import (inline) "../../../bower_components/animate.css/animate.css";
+@import "../sass/_icon-font.scss";
 
 .browserupgrade {
     margin: 0.2em 0;
@@ -64,13 +65,14 @@ section {
 section.intro {
     height: 550px;
     padding-top: 70px;
-    .at2x('/img/bg.jpg', cover);
-    background-repeat: no-repeat;
-    background-position: center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: transparent;
+    // .at2x('/img/bg.jpg', cover);
+    // background-repeat: no-repeat;
+    // background-position: center center fixed;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
     box-shadow: inset 0 0 0 1000px rgba(146, 215, 245, 0.17);
 
     h1 {
@@ -368,19 +370,18 @@ section.timeline {
 }
 
 section.regulation {
-    .at2x('http://azmind.com/wrapbootstrap/mira-coming-soon/v2-1/assets/img/backgrounds/2.jpg', cover);
-    background-repeat: no-repeat;
-    background-position: center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.66);
     text-align: center;
     height: 260px;
 
     div.regulation {
         margin-top: 40px;
         padding-bottom: 10px;
+    }
+
+    a {
+        transition: all .3s;
     }
 
     h1 {
@@ -410,17 +411,13 @@ section.regulation {
 }
 
 section.sponsors {
-    height: 100px;
+    height: 300px;
+    background-color: white;
 }
 
 section.about {
-    .at2x('http://azmind.com/wrapbootstrap/mira-coming-soon/v2-1/assets/img/backgrounds/2.jpg', cover);
-    background-repeat: no-repeat;
-    background-position: center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.66);
     text-align: center;
 
     color: white;
@@ -470,6 +467,7 @@ section.about {
         font-size: 60px;
         padding-top: 35px;
         border: 1px solid #FD0000;
+        cursor: pointer;
     }
 
     .about-box-icon:hover {
@@ -477,12 +475,19 @@ section.about {
         border: 1px solid #fff;
         transition: all .3s;
     }
+
+    .mtb {
+        i {
+            transform: rotate(35deg);
+        }
+    }
 }
 
 section.contacts {
     padding-top: 30px;
     padding-bottom: 20px;
     color: #555;
+    background-color: white;
 
     font-family: "Roboto";
 
@@ -520,7 +525,10 @@ section.contacts {
     ul {
         padding: 0;
     }
+}
 
+section.contacts,
+section.footer {
     .social-icons {
         margin-bottom: 20px;
         margin-top: 15px;
@@ -529,8 +537,11 @@ section.contacts {
             display: inline-block;
         }
 
-        i {
-            margin: 0 10px;
+        i.icon-dr {
+            margin: 0 8px;
+            line-height: 35px;
+            position: relative;
+            top: 2px;
         }
 
         a {
@@ -543,6 +554,34 @@ section.contacts {
             border: 1px solid #888;
             border-radius: 50%;
         }
+
+        a:hover {
+            i {
+                color: white;
+            }
+        }
+
+        a.tw:hover {
+            background-color: #00aced;
+            border: 1px solid #00aced;
+        }
+
+        a.fb:hover {
+            background-color: #3b5998;
+            border: 1px solid #3b5998;
+        }
+
+        a.dr:hover {
+            background-color: #ff6600;
+            border: 1px solid #ff6600;
+        }
+    }
+}
+
+section.footer {
+    .social-icons {
+        padding: 0px;
+        margin: 0 0 10px;
     }
 }
 

@@ -1,0 +1,51 @@
+@font-face {
+	font-family: "icon-font";
+	src: url('/fonts/icon-font.eot');
+	src: url('/fonts/icon-font.eot?#iefix') format('eot'),
+		url('/fonts/icon-font.woff') format('woff'),
+		url('/fonts/icon-font.ttf') format('truetype'),
+		url('/fonts/icon-font.svg#icon-font') format('svg');
+}
+
+.icon-base-pseudo {
+	font-family: "icon-font";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+.icon-char(@filename) {
+	@dr: "\E001";
+	@fut: "\E002";
+	@ind: "\E003";
+	@tri: "\E004";
+	
+	content: @@filename;
+}
+
+.icon(@filename, @insert: before) {
+	@pseudo-selector: ~":@{insert}";
+
+	&@{pseudo-selector} {
+		&:extend(.icon-base-pseudo);
+		.icon-char(@filename);
+	}
+}
+
+.icon-dr {
+	.icon(dr);
+}
+.icon-fut {
+	.icon(fut);
+}
+.icon-ind {
+	.icon(ind);
+}
+.icon-tri {
+	.icon(tri);
+}
