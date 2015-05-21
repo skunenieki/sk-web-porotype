@@ -19,9 +19,11 @@ var countdown =  $('#countdown');
 $.backstretch('/img/bg.jpg');
 
 $.backstretch([
-    '/img/bg.jpg',
-    '/img/bg.jpg',
-    '/img/bg.jpg'
+    '/img/bg1.jpg',
+    '/img/bg2.jpg',
+    '/img/bg3.jpg',
+    '/img/bg4.jpg',
+    '/img/bg5.jpg'
   ], {duration: 3000, fade: 750});
 
 $(window).load(function() {
