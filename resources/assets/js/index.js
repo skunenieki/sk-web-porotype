@@ -8,6 +8,7 @@ var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
 
+require('../../../bower_components/retina.js/dist/retina.min');
 require('zepto.backstretch/zepto.backstretch.min');
 
 require('./twitter-fetcher');
@@ -16,6 +17,12 @@ require('./timecircles');
 var countdown =  $('#countdown');
 
 $.backstretch('/img/bg.jpg');
+
+$.backstretch([
+    '/img/bg.jpg',
+    '/img/bg.jpg',
+    '/img/bg.jpg'
+  ], {duration: 3000, fade: 750});
 
 $(window).load(function() {
     $('#preloader .spinner').hide();

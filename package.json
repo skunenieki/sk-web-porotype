@@ -12,6 +12,7 @@
     "gulp": "^3.8.11",
     "laravel-elixir": "*",
     "laravel-elixir-browserify": "~0.6.0",
-    "laravel-elixir-icons": "^1.0.1"
+    "laravel-elixir-icons": "^1.0.1",
+    "laravel-elixir-imagemin": "^0.1.6"
   }
 }
