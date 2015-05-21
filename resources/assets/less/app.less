@@ -1,5 +1,6 @@
 @import "../../../node_modules/font-awesome/less/font-awesome";
 @import "../../../node_modules/bootstrap/less/bootstrap";
+@import "../../../bower_components/retina.js/src/retina";
 @import (inline) "../../../bower_components/animate.css/animate.css";
 @import "../sass/_icon-font.scss";
 
@@ -64,8 +65,15 @@ section {
 section.intro {
     height: 550px;
     padding-top: 70px;
-    background-color: transparent;
+    // background-color: transparent;
     box-shadow: inset 0 0 0 1000px rgba(146, 215, 245, 0.17);
+    .at2x('/img/bg.jpg', cover);
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
     h1 {
         font-size: 70px;

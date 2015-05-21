@@ -8,7 +8,8 @@ var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
 
-require('../../../bower_components/retina.js/dist/retina.min');
+require('../../../bower_components/retina.js/dist/retina');
+// require('../../../bower_components/wow/dist/wow');
 require('zepto.backstretch/zepto.backstretch.min');
 
 require('./twitter-fetcher');
@@ -16,14 +17,11 @@ require('./timecircles');
 
 var countdown =  $('#countdown');
 
-$.backstretch('/img/bg.jpg');
+// new WOW().init();
 
 $.backstretch([
-    '/img/bg1.jpg',
     '/img/bg2.jpg',
     '/img/bg3.jpg',
-    '/img/bg4.jpg',
-    '/img/bg5.jpg'
   ], {duration: 3000, fade: 750});
 
 $(window).load(function() {
