@@ -103,25 +103,25 @@
             </div>
             <div>
                 <div class="col-xs-6 col-sm-3 about-box ind">
-                    <div class="about-box-icon">
+                    <div class="about-box-icon" data-toggle="modal" data-target="#indModal">
                         <i class="fa icon-ind"></i>
                     </div>
                     <h4>10 km</h4>
                 </div>
                 <div class="col-xs-6 col-sm-3 about-box mtb">
-                    <div class="about-box-icon">
+                    <div class="about-box-icon" data-toggle="modal" data-target="#mtbModal">
                         <i class="fa icon-ind"></i>
                     </div>
                     <h4>Velokross</h4>
                 </div>
                 <div class="col-xs-6 col-sm-3 about-box tri">
-                    <div class="about-box-icon">
+                    <div class="about-box-icon" data-toggle="modal" data-target="#triModal">
                         <i class="fa icon-tri"></i>
                     </div>
                     <h4>Triatlons</h4>
                 </div>
                 <div class="col-xs-6 col-sm-3 about-box fut">
-                    <div class="about-box-icon">
+                    <div class="about-box-icon" data-toggle="modal" data-target="#futModal">
                         <i class="fa icon-fut"></i>
                     </div>
                     <h4>Futbols</h4>
@@ -184,5 +184,109 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-17373157-1','auto');ga('send','pageview');
     </script>
+
+    <div class="modal fade" id="indModal" tabindex="-1" role="dialog" aria-labelledby="indModalLabel" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2><i class="fa icon-ind"></i></h2>
+                            <h2>10km</h2>
+                            <p class="item-intro text-muted">10km riteņbraukšanas sacensības ar individuālo startu.</p>
+                            <!-- <img class="img-responsive img-centered" src="img/portfolio/startup-framework-preview.png" alt=""> -->
+                            <!-- <p>Startup Frameworkis a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p> -->
+                            <!-- <p>You can preview Startup Framework here.</p> -->
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aizvērt</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="mtbModal" tabindex="-1" role="dialog" aria-labelledby="mtbModalLabel" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2 class="mtb"><i class="fa icon-ind"></i></h2>
+                            <h2>Velokross</h2>
+                            <!-- <p class="item-intro text-muted">10km riteņbraukšanas sacensības ar individuālo startu.</p> -->
+                            <!-- <img class="img-responsive img-centered" src="img/portfolio/startup-framework-preview.png" alt=""> -->
+                            <!-- <p>Startup Frameworkis a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p> -->
+                            <!-- <p>You can preview Startup Framework here.</p> -->
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aizvērt</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="triModal" tabindex="-1" role="dialog" aria-labelledby="triModalLabel" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2><i class="fa icon-tri"></i></h2>
+                            <h2>Triatlons</h2>
+                            <!-- <p class="item-intro text-muted">10km riteņbraukšanas sacensības ar individuālo startu.</p> -->
+                            <!-- <img class="img-responsive img-centered" src="img/portfolio/startup-framework-preview.png" alt=""> -->
+                            <!-- <p>Startup Frameworkis a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p> -->
+                            <!-- <p>You can preview Startup Framework here.</p> -->
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aizvērt</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="futModal" tabindex="-1" role="dialog" aria-labelledby="futModalLabel" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2><i class="fa icon-fut"></i></h2>
+                            <h2>Futbols</h2>
+                            <!-- <p class="item-intro text-muted">10km riteņbraukšanas sacensības ar individuālo startu.</p> -->
+                            <!-- <img class="img-responsive img-centered" src="img/portfolio/startup-framework-preview.png" alt=""> -->
+                            <!-- <p>Startup Frameworkis a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p> -->
+                            <!-- <p>You can preview Startup Framework here.</p> -->
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aizvērt</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>

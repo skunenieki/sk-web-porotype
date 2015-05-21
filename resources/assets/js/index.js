@@ -3,6 +3,7 @@ window.jQuery = $;
 window.$ = $;
 
 // require('bootstrap/js/collapse');
+require('bootstrap/js/modal');
 
 var moment = require('moment');
 require('moment/locale/lv');
@@ -22,7 +23,9 @@ var countdown =  $('#countdown');
 $.backstretch([
     '/img/bg2.jpg',
     '/img/bg3.jpg',
-  ], {duration: 3000, fade: 750});
+    '/img/bg4.jpg',
+    '/img/bg5.jpg',
+  ], {duration: 4000, fade: 750});
 
 $(window).load(function() {
     $('#preloader .spinner').hide();

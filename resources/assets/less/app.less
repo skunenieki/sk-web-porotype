@@ -219,7 +219,7 @@ section.timeline {
         list-style: none;
         position: relative;
         margin: 0;
-        padding: 30px 0 20px 0;
+        padding: 15px 0 20px 0;
 
         li {
             position: relative;
@@ -239,8 +239,8 @@ section.timeline {
                 color: #fff;
                 line-height: 32px; // 55
                 font-size: 1.4em;
-                top: 26px; //16
-                z-index: 2;
+                top: 16px;
+                z-index: 0;
             }
 
             .message {
@@ -253,7 +253,7 @@ section.timeline {
                 border-radius: 4px;
                 border: 1px solid #d4d4d4;
                 box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-                margin-top: 15px;
+                margin-top: 5px;
             }
 
             .message:before {
@@ -304,7 +304,7 @@ section.timeline {
                 height: 50px;
                 width: 50px;
                 line-height: 55px;
-                top: 16px;
+                top: 0;
             }
 
             .message {
@@ -329,6 +329,18 @@ section.timeline {
             border-right-width: 0;
             right: -14px;
             left: auto;
+        }
+
+        ul {
+            li {
+                .message {
+                    margin: 0;
+                }
+
+                .timeline-badge {
+                    top: 0;
+                }
+            }
         }
     }
 
@@ -697,3 +709,99 @@ h1, h2, h3, h4, h5, h6 {
   src: local('Roboto Bold'), local('Roboto-Bold'), url(http://fonts.gstatic.com/s/roboto/v15/97uahxiqZRoncBaCEI3aW7O3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
 }
 
+
+
+.modal {
+    .modal-content {
+        padding: 100px 0;
+        min-height: 100%;
+        border: 0;
+        border-radius: 0;
+        text-align: center;
+        background-clip: border-box;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        font-family: "Roboto";
+
+        h2 {
+            font-size: 42px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+            margin: 0;
+
+            i.fa {
+                font-size: 80px;
+            }
+        }
+
+        h2.mtb i {
+            transform: rotate(35deg);
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+    }
+
+    .modal-content p.item-intro {
+        margin: 20px 0 20px;
+        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-style: italic;
+    }
+
+    .modal-content ul.list-inline {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .modal-content img {
+        margin-bottom: 30px;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 75px;
+        height: 75px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .close-modal:hover {
+        opacity: .3;
+    }
+
+    .close-modal .lr {
+        z-index: 1051;
+        width: 1px;
+        height: 75px;
+        margin-left: 35px;
+        background-color: #222;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .close-modal .lr .rl {
+        z-index: 1052;
+        width: 1px;
+        height: 75px;
+        background-color: #222;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .modal-backdrop {
+        display: none;
+        opacity: 0;
+    }
+
+    button,
+    button:hover {
+        background-color: transparent;
+        color: #555;
+        border: 1px solid #555;
+    }
+}
