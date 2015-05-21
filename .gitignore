@@ -5,5 +5,5 @@
 /node_modules/
 /bower_components/
 /skunenieki.github.io/
-/resources/assets/less/_icons.less
+/resources/assets/sass/_icon-font.scss
 npm-debug.log
