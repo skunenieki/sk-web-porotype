@@ -8,10 +8,14 @@ var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
 
+require('zepto.backstretch/zepto.backstretch.min');
+
 require('./twitter-fetcher');
 require('./timecircles');
 
 var countdown =  $('#countdown');
+
+$.backstretch('/img/bg.jpg');
 
 $(window).load(function() {
     $('#preloader .spinner').hide();

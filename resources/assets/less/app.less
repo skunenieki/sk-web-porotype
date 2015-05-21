@@ -233,7 +233,7 @@ section.timeline {
                 border-top-left-radius: 50%;
                 border-bottom-right-radius: 50%;
                 border-bottom-left-radius: 50%;
-                background-color: #5bc0de;
+                background-color: #55acee;
                 margin-left: -25px;
                 text-align: center;
                 color: #fff;
@@ -446,10 +446,25 @@ section.about {
 
     h4 {
         color: white;
-        padding: 10px 0;
-        font-size: 30px;
+        font-size: 26px;
         font-weight: 100;
-        line-height: 34px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    blockquote {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 58px;
+        font-weight: 100;
+        line-height: 80px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 28px;
     }
 
     .about-box {
@@ -457,15 +472,15 @@ section.about {
     }
 
     .about-box-icon {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
         margin: 0 auto;
         background: #FD0000;
         border-radius: 50%;
         padding-top: 28px;
         transition: all .3s;
         font-size: 60px;
-        padding-top: 35px;
+        padding-top: 25px;
         border: 1px solid #FD0000;
         cursor: pointer;
     }
@@ -479,6 +494,30 @@ section.about {
     .mtb {
         i {
             transform: rotate(35deg);
+            position: relative;
+            top: -1px;
+        }
+    }
+
+    .fut {
+        i {
+            position: relative;
+            top: 6px;
+            left: -4px;
+        }
+    }
+
+    @media (min-width: @screen-sm-min) {
+        blockquote {
+            text-align: right;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .about-text {
+            padding-top: 20px;
         }
     }
 }
@@ -562,8 +601,8 @@ section.footer {
         }
 
         a.tw:hover {
-            background-color: #00aced;
-            border: 1px solid #00aced;
+            background-color: #55acee;
+            border: 1px solid #55acee;
         }
 
         a.fb:hover {
