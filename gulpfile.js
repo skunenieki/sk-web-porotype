@@ -6,7 +6,6 @@ elixir(function(mix) {
     mix.icons({
            template: 'resources/assets/less/_icons.less',
        })
-       .imagemin('resources/assets/img/**/*', 'public/img')
        .less('app.less')
        .browserify('index.js')
        .copy('node_modules/bootstrap/fonts', 'public/fonts/')
