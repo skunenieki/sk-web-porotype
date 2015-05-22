@@ -40,6 +40,14 @@ $(window).on('resize', function() {
     createTimeCicles();
 });
 
+$(function () {
+    var parent = $(".sponsors .shuffle");
+    var sponsorLogos = parent.children();
+    while (sponsorLogos.length) {
+        parent.append(sponsorLogos.splice(Math.floor(Math.random() * sponsorLogos.length), 1)[0]);
+    }
+});
+
 function createTimeCicles() {
     countdown.TimeCircles({
         fg_width: 0.013,
