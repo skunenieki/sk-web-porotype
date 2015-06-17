@@ -4,6 +4,9 @@
 @import (inline) "../../../bower_components/animate.css/animate.css";
 @import "../sass/_icon-font.scss";
 
+@theme-color-red: #fd0000;
+@theme-color-dark: #1a1a1a;
+
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -427,7 +430,7 @@ section.regulation {
 }
 
 section.galleries {
-    background: #1A1A1A;
+    background: #color-theme-dark;
 
     .no-gutter > [class*='col-'] {
         padding-right:0;
@@ -501,7 +504,7 @@ section.galleries {
 }
 
 section.all-galleries {
-    background: #1A1A1A;
+    background: #color-theme-dark;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -650,13 +653,13 @@ section.about {
         width: 120px;
         height: 120px;
         margin: 0 auto;
-        background: #FD0000;
+        background: @theme-color-red;
         border-radius: 50%;
         padding-top: 28px;
         transition: all .3s;
         font-size: 60px;
         padding-top: 25px;
-        border: 1px solid #FD0000;
+        border: 1px solid @theme-color-red;
         cursor: pointer;
     }
 
@@ -812,7 +815,7 @@ section.footer {
 }
 
 section.footer {
-    background: #1A1A1A;
+    background: @color-theme-dark;
     text-align: center;
     padding: 10px 0 20px 0;
     position: relative;
