@@ -441,9 +441,9 @@ section.galleries {
         margin: 0 auto;
         .gallery-box-caption {
             color: white;
-            opacity: 0;
+            opacity: 1;
             display: block;
-            background: fade(#FD0000, 80%);
+            background: fade(#000000, 60%);
             position: absolute;
             bottom: 0;
             text-align: center;
@@ -473,23 +473,58 @@ section.galleries {
                 }
             }
         }
+        @media (min-width: @screen-sm-min) {
+            .gallery-box {
+                .gallery-box-caption {
+                    .gallery-box-caption-content {
+                        .project-category {
+                            font-size: 16px;
+                        }
+                        .project-name {
+                            font-size: 22px;
+                        }
+                    }
+                }
+            }
+        }
+        @media (min-width: @screen-md-min) {
+            .gallery-box-caption {
+                opacity: 0;
+            }
+        }
         &:hover {
             .gallery-box-caption {
                 opacity: 1;
             }
         }
-        @media (min-width: 768px) {
-            .gallery-box-caption {
-                .gallery-box-caption-content {
-                    .project-category {
-                        font-size: 16px;
-                    }
-                    .project-name {
-                        font-size: 22px;
-                    }
-                }
-            }
-        }
+    }
+}
+
+section.all-galleries {
+    background: #1A1A1A;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    a {
+        transition: all .3s;
+    }
+
+    .btn-lg {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        padding: 15px 30px;
+        background: transparent;
+        color: white;
+        font-size: 20px;
+        border-color: white;
+        font-weight: 100;
+        letter-spacing: 1px;
+    }
+
+    .btn-lg:hover {
+        color: black;
+        background-color: white;
+        text-shadow: none;
     }
 }
 
