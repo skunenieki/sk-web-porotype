@@ -33,6 +33,23 @@ $(window).load(function() {
     $('section').show();
     createTimeCicles();
     countdown.delay(350).addClass('animated bounceIn');
+
+    $.getJSON('https://picasaweb.google.com/data/feed/api/user/106491134644784033245',
+        {
+            'kind': 'album',
+            'alt': 'json',
+            'v': '2.0',
+            'max-results': '8',
+            'fields': "entry(title,link[@rel='alternate'](@href),media:group(media:content(@url)))",
+        }, function(json) {
+            var galleryBoxes = $('.gallery-box');
+            $.each(json.feed.entry, function(idx, obj) {
+                var item = galleryBoxes[idx];
+                $(item).find('.project-category').html(obj.title.$t);
+                $(item).attr('href', obj.link[0].href);
+                $(item).find('img').attr('src', obj.media$group.media$content[0].url.replace(/\/(?=[^\/]*$)/, '/s512-c/'));
+            });
+    });
 });
 
 $(window).on('resize', function() {
