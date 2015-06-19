@@ -40,13 +40,13 @@ $(window).load(function() {
             'alt': 'json',
             'v': '2.0',
             'max-results': '8',
-            'fields': "entry(title,link[@rel='alternate'](@href),media:group(media:content(@url)))",
+            'fields': "entry(gphoto:id,title,media:group(media:content(@url))),title",
         }, function(json) {
             var galleryBoxes = $('.gallery-box');
             $.each(json.feed.entry, function(idx, obj) {
                 var item = galleryBoxes[idx];
                 $(item).find('.project-category').html(obj.title.$t);
-                $(item).attr('href', obj.link[0].href);
+                $(item).attr('href', 'https://plus.google.com/u/0/photos/' + json.feed.title.$t + '/albums/' + obj.gphoto$id.$t);
                 $(item).find('img').attr('src', obj.media$group.media$content[0].url.replace(/\/(?=[^\/]*$)/, '/s512-c/'));
             });
     });
