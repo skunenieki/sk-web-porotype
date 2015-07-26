@@ -1,8 +1,15 @@
+require('jquery-lazyload/jquery.lazyload');
 
 var FastClick = require('fastclick');
 
 $(function() {
     FastClick(document.body);
+});
+
+$(function() {
+    $("img.lazy").lazyload({
+        event : "loadSponsorImages"
+    });
 });
 
 require('bootstrap/js/modal');
@@ -18,14 +25,16 @@ require('./timecircles');
 
 var countdown =  $('#countdown');
 
-$.backstretch([
-    '/img/bg2.jpg',
-    '/img/bg3.jpg',
-    '/img/bg4.jpg',
-    '/img/bg5.jpg',
-  ], {duration: 4000, fade: 750});
+
 
 $(window).load(function() {
+    $.backstretch([
+        '/img/bg2.jpg',
+        '/img/bg3.jpg',
+        '/img/bg4.jpg',
+        '/img/bg5.jpg',
+      ], {duration: 4000, fade: 750});
+
     $('#preloader .spinner').hide();
     $('#preloader').delay(350).fadeOut('slow');
     $('section').show();
@@ -98,6 +107,9 @@ $(window).load(function() {
         }
     });
 
+    // var timeout = setTimeout(function() {
+        $('img.lazy').trigger('loadSponsorImages');
+    // }, 50);
 });
 
 $(window).on('resize', function() {
