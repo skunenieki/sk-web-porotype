@@ -1,8 +1,4 @@
-var $ = require('jquery');
-window.jQuery = $;
-window.$ = $;
 
-// require('bootstrap/js/collapse');
 require('bootstrap/js/modal');
 
 var moment = require('moment');
@@ -10,15 +6,12 @@ require('moment/locale/lv');
 moment.locale('lv');
 
 require('../../../bower_components/retina.js/dist/retina');
-// require('../../../bower_components/wow/dist/wow');
 require('zepto.backstretch/zepto.backstretch.min');
 
 require('./twitter-fetcher');
 require('./timecircles');
 
 var countdown =  $('#countdown');
-
-// new WOW().init();
 
 $.backstretch([
     '/img/bg2.jpg',
