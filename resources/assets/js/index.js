@@ -1,11 +1,5 @@
 require('jquery-lazyload/jquery.lazyload');
 
-var FastClick = require('fastclick');
-
-$(function() {
-    FastClick(document.body);
-});
-
 $(function() {
     $("img.lazy").lazyload({
         event : "loadSponsorImages"
