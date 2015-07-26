@@ -28,6 +28,7 @@ deploy:
   region: eu-central-1
   local-dir: public/
   cache_control: "public, max-age=600"
+  detect_encoding: true
   on:
     branch: master
     repo: skunenieki/sk-web-porotype
