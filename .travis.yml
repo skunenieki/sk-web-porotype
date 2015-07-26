@@ -26,6 +26,7 @@ deploy:
   secret_access_key:
     secure: RNZ21q/nK79spyQkg5MN1hbW6TLjbKipeGFJmhOPID2z2I1kogGYgMBqEROqwRBG5lvoof0z5qkBCulLuImeNBm5NsLOQJ8x7T9eXhQwZVbDehxx9Qa4q5DWnOjkbCrlkIFvn+uH1Z44krzb586KLJkD/fEsoqtI8lFyiDA1egI=
   bucket: www.skunenieki.lv
+  endpoint: www.skunenieki.lv.s3-website-eu-central-1.amazonaws.com
   local-dir: public/
   on:
     branch: master
