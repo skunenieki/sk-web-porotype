@@ -17,9 +17,6 @@ script:
 - ./node_modules/.bin/gulp icons --production
 - ./node_modules/.bin/gulp --production
 
-after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./after_success.sh
-
 deploy:
   provider: s3
   access_key_id: AKIAJTSKLZBTPGYGQ6XQ
@@ -30,6 +27,7 @@ deploy:
   endpoint: www.skunenieki.lv.s3-website-eu-central-1.amazonaws.com
   region: eu-central-1
   local-dir: public/
+  cache_control: "public, max-age=600"
   on:
     branch: master
     repo: skunenieki/sk-web-porotype
