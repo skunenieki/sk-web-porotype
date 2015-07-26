@@ -1,6 +1,11 @@
 
-require('bootstrap/js/modal');
+var FastClick = require('fastclick');
 
+$(function() {
+    FastClick(document.body);
+});
+
+require('bootstrap/js/modal');
 var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
