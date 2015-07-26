@@ -1,8 +1,11 @@
 {
   "private": true,
   "dependencies": {
+    "algoliasearch": "^3.7.5",
+    "algoliasearch-helper": "^2.1.2",
     "bootstrap": "~3.3.2",
     "font-awesome": "^4.3.0",
+    "hogan.js": "^3.0.2",
     "jquery-lazyload": "^1.9.5",
     "moment": "~2.9.0",
     "zepto.backstretch": "^2.1.2"

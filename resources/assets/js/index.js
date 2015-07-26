@@ -19,39 +19,12 @@ require('./timecircles');
 
 var countdown =  $('#countdown');
 
+var hogan = require('hogan.js');
 
+var algoliasearch       = require('algoliasearch');
+var algoliasearchHelper = require('algoliasearch-helper');
 
 $(window).load(function() {
-    $.backstretch([
-        '/img/bg2.jpg',
-        '/img/bg3.jpg',
-        '/img/bg4.jpg',
-        '/img/bg5.jpg',
-      ], {duration: 4000, fade: 750});
-
-    $('#preloader .spinner').hide();
-    $('#preloader').delay(350).fadeOut('slow');
-    $('section').show();
-    createTimeCicles();
-    countdown.delay(350).addClass('animated bounceIn');
-
-    $.getJSON('https://picasaweb.google.com/data/feed/api/user/106491134644784033245',
-        {
-            'kind': 'album',
-            'alt': 'json',
-            'v': '2.0',
-            'max-results': '8',
-            'fields': "entry(gphoto:id,title,media:group(media:content(@url))),title",
-        }, function(json) {
-            var galleryBoxes = $('.gallery-box');
-            $.each(json.feed.entry, function(idx, obj) {
-                var item = galleryBoxes[idx];
-                $(item).find('.project-category').html(obj.title.$t);
-                $(item).attr('href', 'https://plus.google.com/u/0/photos/' + json.feed.title.$t + '/albums/' + obj.gphoto$id.$t);
-                $(item).find('img').attr('src', obj.media$group.media$content[0].url.replace(/\/(?=[^\/]*$)/, '/s512-c/'));
-            });
-    });
-
     twitterFetcher.fetch({
         id: '579257548878061568',
         domId: 'timeline',
@@ -101,14 +74,91 @@ $(window).load(function() {
         }
     });
 
-    // var timeout = setTimeout(function() {
-        $('img.lazy').trigger('loadSponsorImages');
-    // }, 50);
-});
+    $.backstretch([
+        '/img/bg2.jpg',
+        '/img/bg3.jpg',
+        '/img/bg4.jpg',
+        '/img/bg5.jpg',
+      ], {duration: 4000, fade: 750});
 
-$(window).on('resize', function() {
-    countdown.TimeCircles().destroy();
-    createTimeCicles();
+    $('#preloader .spinner').hide();
+    $('#preloader').delay(350).fadeOut('slow');
+    $('section').show();
+
+    // 2015-08-08 11:00:00
+    if (moment().diff('2015-07-26 11:00:00', 'seconds') < 0) {
+        createTimeCicles();
+        countdown.delay(350).addClass('animated bounceIn');
+
+        $(window).on('resize', function() {
+            countdown.TimeCircles().destroy();
+            createTimeCicles();
+        });
+    } else {
+        $('section.intro .container').show();
+        var $inputField = $('#q');
+        var $hits       = $('#hits');
+        var algolia     = algoliasearch('7MHQPEIA7V', '836f3bf2d87cd247c0b2b9d4c410ffd7');
+        var helper      = algoliasearchHelper(algolia, 'Skunenieki', {
+            hitsPerPage: 5,
+            highlightPreTag: '<strong>',
+            highlightPostTag: '</strong>',
+        });
+
+        var hitTemplate = hogan.compile($('#hit-template').text());
+
+        $inputField.on('keyup', function() {
+            var query = $inputField.val();
+            if (query == '') {
+                $('.search-results').slideUp({
+                    done: function() {
+                        $('.start-search').fadeIn();
+                    },
+                });
+            } else {
+                $('section.intro').height('auto');
+                $('.start-search').hide();
+                $('.search-results').slideDown({
+                    start: function() {
+                        $(this).removeClass('hide');
+                    },
+                });
+                helper.setQuery(query).search();
+            }
+        })
+        .focus();
+
+        helper.on('result', function(content, state) {
+            console.log(content);
+            var hitsHtml = '';
+            for (var i = 0; i < content.hits.length; ++i) {
+                hitsHtml += hitTemplate.render(content.hits[i]);
+            }
+            // if (content.hits.length === 0) hitsHtml = '<p id="no-hits">We didn\'t find any products for your search.</p>';
+            $hits.html(hitsHtml);
+        });
+    }
+
+    setTimeout(function() {
+        $.getJSON('https://picasaweb.google.com/data/feed/api/user/106491134644784033245',
+            {
+                'kind': 'album',
+                'alt': 'json',
+                'v': '2.0',
+                'max-results': '8',
+                'fields': "entry(gphoto:id,title,media:group(media:content(@url))),title",
+            }, function(json) {
+                var galleryBoxes = $('.gallery-box');
+                $.each(json.feed.entry, function(idx, obj) {
+                    var item = galleryBoxes[idx];
+                    $(item).find('.project-category').html(obj.title.$t);
+                    $(item).attr('href', 'https://plus.google.com/u/0/photos/' + json.feed.title.$t + '/albums/' + obj.gphoto$id.$t);
+                    $(item).find('img').attr('src', obj.media$group.media$content[0].url.replace(/\/(?=[^\/]*$)/, '/s512-c/'));
+                });
+        });
+    }, 1000);
+
+    $('img.lazy').trigger('loadSponsorImages');
 });
 
 $(function () {
