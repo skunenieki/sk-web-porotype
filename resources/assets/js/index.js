@@ -86,15 +86,7 @@ $(window).load(function() {
     $('section').show();
 
     // 2015-08-08 11:00:00
-    if (moment().diff('2015-07-26 11:00:00', 'seconds') < 0) {
-        createTimeCicles();
-        countdown.delay(350).addClass('animated bounceIn');
-
-        $(window).on('resize', function() {
-            countdown.TimeCircles().destroy();
-            createTimeCicles();
-        });
-    } else {
+    if (moment().diff('2015-08-1 13:00:00', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
         $('section.intro .container').show();
         var $inputField = $('#q');
         var $hits       = $('#hits');
@@ -116,13 +108,8 @@ $(window).load(function() {
                     },
                 });
             } else {
-                $('section.intro').height('auto');
                 $('.start-search').hide();
-                $('.search-results').slideDown({
-                    start: function() {
-                        $(this).removeClass('hide');
-                    },
-                });
+                $('.search-results').show();
                 helper.setQuery(query).search();
             }
         })
@@ -134,8 +121,18 @@ $(window).load(function() {
             for (var i = 0; i < content.hits.length; ++i) {
                 hitsHtml += hitTemplate.render(content.hits[i]);
             }
-            // if (content.hits.length === 0) hitsHtml = '<p id="no-hits">We didn\'t find any products for your search.</p>';
+            if (content.hits.length === 0) {
+                hitsHtml = '<li class="no-hits"><a>Rezultāti nav pieejami.. :(</a></li>';
+            }
             $hits.html(hitsHtml);
+        });
+    } else {
+        createTimeCicles();
+        countdown.delay(350).addClass('animated bounceIn');
+
+        $(window).on('resize', function() {
+            countdown.TimeCircles().destroy();
+            createTimeCicles();
         });
     }
 

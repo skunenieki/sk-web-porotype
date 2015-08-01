@@ -52,11 +52,12 @@
         <div id="countdown" data-date="2015-08-08 11:00:00" data-timer="100"></div>
       </div>
       <div class="container" style="display: none">
-          <div class="row">
+          <div class="row search">
               <div class="col-centered col-xs-10 col-md-8 col-lg-7">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon" id="search-addon"><span class="glyphicon glyphicon-search"></span></span>
-                        <input type="text" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" class="form-control" placeholder="Vārds Uzvārds" aria-describedby="search-addon">
+                    <div class="form-group has-feedback inner-addon left-addon">
+                        <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                        <input type="search" class="form-control input-lg" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" placeholder="Vārds Uzvārds" aria-describedby="search-addon">
+                        <ul class="search-results" id="hits"></ul>
                     </div>
                     <div class="row start-search">
                         <div class="col-xs-offset-3 col-xs-2 col-sm-offset-2">
@@ -64,11 +65,6 @@
                         </div>
                         <div class="col-xs-7 col-sm-8">
                             <h3>Raksti savu vārdu lai atrastu rezultātu..</h3>
-                        </div>
-                    </div>
-                    <div class="row search-results" style="<!-- display: none -->">
-                        <div class="col-xs-12">
-                            <div class="btn-group-vertical btn-block" role="group" id="hits"></div>
                         </div>
                     </div>
               </div>
@@ -462,7 +458,12 @@
     </div>
 
     <script type="text/template" id="hit-template">
-        <button type="button" class="btn btn-default">{{{ _highlightResult.name.value }}} ({{ birthYear }})</button>
+        <li class="hit">
+            <a>
+                {{{ _highlightResult.name.value }}} ({{ birthYear }})<br>
+                <span>Piedalijies <strong>12</strong> reizes</span>
+            </a>
+        </li>
     </script>
   </body>
 </html>
