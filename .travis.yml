@@ -4,18 +4,28 @@ sudo: false
 
 cache:
   directories:
-    - node_modules
-
-before_install:
-  - echo -e "machine github.com\n  login $GH_TOKEN" >> ~/.netrc
+  - node_modules
 
 install:
-  - npm install
-  - ./node_modules/.bin/bower install
+- npm install
+- ./node_modules/.bin/bower install
 
 script:
-  - ./node_modules/.bin/gulp icons --production
-  - ./node_modules/.bin/gulp --production
+- ./node_modules/.bin/gulp icons --production
+- ./node_modules/.bin/gulp --production
 
-after_success:
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./after_success.sh
+deploy:
+  provider: s3
+  access_key_id: AKIAJTSKLZBTPGYGQ6XQ
+  secret_access_key:
+    secure: RNZ21q/nK79spyQkg5MN1hbW6TLjbKipeGFJmhOPID2z2I1kogGYgMBqEROqwRBG5lvoof0z5qkBCulLuImeNBm5NsLOQJ8x7T9eXhQwZVbDehxx9Qa4q5DWnOjkbCrlkIFvn+uH1Z44krzb586KLJkD/fEsoqtI8lFyiDA1egI=
+  bucket: www.skunenieki.lv
+  skip_cleanup: true
+  endpoint: www.skunenieki.lv.s3-website-eu-central-1.amazonaws.com
+  region: eu-central-1
+  local-dir: public/
+  cache_control: "public, max-age=600"
+  detect_encoding: true
+  on:
+    branch: master
+    repo: skunenieki/sk-web-porotype
