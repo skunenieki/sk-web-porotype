@@ -89,8 +89,8 @@ $(window).load(function() {
         $('section.intro .container').show();
         var $inputField = $('#q');
         var $hits       = $('#hits');
-        var algolia     = algoliasearch('7MHQPEIA7V', '836f3bf2d87cd247c0b2b9d4c410ffd7');
-        var helper      = algoliasearchHelper(algolia, 'Skunenieki', {
+        var algolia     = algoliasearch('01SR69EPVZ', '78c04ef3ca89dca87fc7bcc0a0179b90');
+        var helper      = algoliasearchHelper(algolia, 'skunenieki', {
             hitsPerPage: 5,
             highlightPreTag: '<strong>',
             highlightPostTag: '</strong>',
@@ -115,7 +115,6 @@ $(window).load(function() {
         .focus();
 
         helper.on('result', function(content, state) {
-            console.log(content);
             var hitsHtml = '';
             for (var i = 0; i < content.hits.length; ++i) {
                 hitsHtml += hitTemplate.render(content.hits[i]);
