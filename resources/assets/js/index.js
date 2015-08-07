@@ -99,6 +99,10 @@ $(window).load(function() {
         var hitTemplate = hogan.compile($('#hit-template').text());
 
         $inputField.on('keyup', function() {
+            if (this.value.length === 1) {
+                ga('send', 'event', 'search', 'type');
+            }
+
             var query = $inputField.val();
             if (query == '') {
                 $('.search-results').slideUp({
@@ -154,6 +158,14 @@ $(window).load(function() {
     }, 1000);
 
     $('img.lazy').trigger('loadSponsorImages');
+});
+
+jQuery('#q').on('click', function() {
+    ga('send', 'event', 'search', 'click');
+});
+
+jQuery('.gallery-box').on('click', function() {
+    ga('send', 'event', 'gallery', 'click');
 });
 
 $(function () {
