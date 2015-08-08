@@ -7,6 +7,7 @@ $(function() {
 });
 
 require('bootstrap/js/modal');
+require('bootstrap/js/dropdown');
 var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
