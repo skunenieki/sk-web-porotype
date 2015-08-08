@@ -85,7 +85,7 @@ $(window).load(function() {
     $('#preloader').delay(350).fadeOut('slow');
     $('section').show();
 
-    if (moment().diff('2015-08-08T011:00:00.000+0300', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
+    // if (moment().diff('2015-08-08T011:00:00.000+0300', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
         $('section.intro .container').show();
         var $inputField = $('#q');
         var $hits       = $('#hits');
@@ -128,15 +128,15 @@ $(window).load(function() {
             }
             $hits.html(hitsHtml);
         });
-    } else {
-        createTimeCicles();
-        countdown.delay(350).addClass('animated bounceIn');
+    // } else {
+    //     createTimeCicles();
+    //     countdown.delay(350).addClass('animated bounceIn');
 
-        $(window).on('resize', function() {
-            countdown.TimeCircles().destroy();
-            createTimeCicles();
-        });
-    }
+    //     $(window).on('resize', function() {
+    //         countdown.TimeCircles().destroy();
+    //         createTimeCicles();
+    //     });
+    // }
 
     setTimeout(function() {
         $.getJSON('https://picasaweb.google.com/data/feed/api/user/106491134644784033245',
