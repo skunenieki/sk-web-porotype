@@ -1,5 +1,5 @@
 /*********************************************************************
-*  #### Twitter Post Fetcher v14.0 ####
+*  #### Twitter Post Fetcher v16.0.1 ####
 *  Coded by Jason Mayes 2015. A present to all the developers out there.
 *  www.jasonmayes.com
 *  Please keep this disclaimer with my code if you use it. Thanks. :-)
@@ -85,7 +85,7 @@
   }
 
   function extractImageUrl(image_data) {
-    if (image_data !== undefined) {
+    if (image_data !== undefined && image_data.innerHTML.indexOf('data-srcset') >= 0) {
       var data_src = image_data.innerHTML
           .match(/data-srcset="([A-z0-9%_\.-]+)/i)[0];
       return decodeURIComponent(data_src).split('"')[1];
@@ -156,10 +156,30 @@
         }
         script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'https://cdn.syndication.twimg.com/widgets/timelines/' +
-            config.id + '?&lang=' + (config.lang || lang) +
-            '&callback=twitterFetcher.callback&' +
-            'suppress_response_codes=true&rnd=' + Math.random();
+        if (config.list !== undefined) {
+          script.src = 'https://syndication.twitter.com/timeline/list?' +
+              'callback=twitterFetcher.callback&dnt=false&list_slug=' +
+              config.list.listSlug + '&screen_name=' + config.list.screenName +
+              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+              '&rnd=' + Math.random();
+        } else if (config.profile !== undefined) {
+          script.src = 'https://syndication.twitter.com/timeline/profile?' +
+              'callback=twitterFetcher.callback&dnt=false' +
+              '&screen_name=' + config.profile.screenName +
+              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+              '&rnd=' + Math.random();
+        } else if (config.likes !== undefined) {
+          script.src = 'https://syndication.twitter.com/timeline/likes?' +
+              'callback=twitterFetcher.callback&dnt=false' +
+              '&screen_name=' + config.likes.screenName +
+              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+              '&rnd=' + Math.random();
+        } else {
+          script.src = 'https://cdn.syndication.twimg.com/widgets/timelines/' +
+              config.id + '?&lang=' + (config.lang || lang) +
+              '&callback=twitterFetcher.callback&' +
+              'suppress_response_codes=true&rnd=' + Math.random();
+        }
         head.appendChild(script);
       }
     },
@@ -186,23 +206,23 @@
       var x = 0;
 
       if (supportsClassName) {
-        var tmp = div.getElementsByClassName('tweet');
+        var tmp = div.getElementsByClassName('timeline-Tweet');
         while (x < tmp.length) {
-          if (tmp[x].getElementsByClassName('retweet-credit').length > 0) {
+          if (tmp[x].getElementsByClassName('timeline-Tweet-retweetCredit').length > 0) {
             rts.push(true);
           } else {
             rts.push(false);
           }
           if (!rts[x] || rts[x] && showRts) {
-            tweets.push(tmp[x].getElementsByClassName('e-entry-title')[0]);
+            tweets.push(tmp[x].getElementsByClassName('timeline-Tweet-text')[0]);
             tids.push(tmp[x].getAttribute('data-tweet-id'));
             authors.push(swapDataSrc(tmp[x]
-                .getElementsByClassName('p-author')[0]));
+                .getElementsByClassName('timeline-Tweet-author')[0]));
             times.push(tmp[x].getElementsByClassName('dt-updated')[0]);
-            permalinksURL.push(tmp[x].getElementsByClassName('permalink')[0]);
-            if (tmp[x].getElementsByClassName('inline-media')[0] !==
+            permalinksURL.push(tmp[x].getElementsByClassName('timeline-Tweet-timestamp')[0]);
+            if (tmp[x].getElementsByClassName('timeline-Tweet-media')[0] !==
                 undefined) {
-              images.push(tmp[x].getElementsByClassName('inline-media')[0]);
+              images.push(tmp[x].getElementsByClassName('timeline-Tweet-media')[0]);
             } else {
               images.push(undefined);
             }
@@ -210,24 +230,25 @@
           x++;
         }
       } else {
-        var tmp = getElementsByClassName(div, 'tweet');
+        var tmp = getElementsByClassName(div, 'timeline-Tweet');
         while (x < tmp.length) {
-          tweets.push(getElementsByClassName(tmp[x], 'e-entry-title')[0]);
-          tids.push(tmp[x].getAttribute('data-tweet-id'));
-          authors.push(swapDataSrc(getElementsByClassName(tmp[x],
-              'p-author')[0]));
-          times.push(getElementsByClassName(tmp[x], 'dt-updated')[0]);
-          permalinksURL.push(getElementsByClassName(tmp[x], 'permalink')[0]);
-          if (getElementsByClassName(tmp[x], 'inline-media')[0] !== undefined) {
-            images.push(getElementsByClassName(tmp[x], 'inline-media')[0]);
-          } else {
-            images.push(undefined);
-          }
-
-          if (getElementsByClassName(tmp[x], 'retweet-credit').length > 0) {
+          if (getElementsByClassName(tmp[x], 'timeline-Tweet-retweetCredit').length > 0) {
             rts.push(true);
           } else {
             rts.push(false);
+          }
+          if (!rts[x] || rts[x] && showRts) {
+            tweets.push(getElementsByClassName(tmp[x], 'timeline-Tweet-text')[0]);
+            tids.push(tmp[x].getAttribute('data-tweet-id'));
+            authors.push(swapDataSrc(getElementsByClassName(tmp[x],
+                'timeline-Tweet-author')[0]));
+            times.push(getElementsByClassName(tmp[x], 'dt-updated')[0]);
+            permalinksURL.push(getElementsByClassName(tmp[x], 'timeline-Tweet-timestamp')[0]);
+            if (getElementsByClassName(tmp[x], 'timeline-Tweet-media')[0] !== undefined) {
+              images.push(getElementsByClassName(tmp[x], 'timeline-Tweet-media')[0]);
+            } else {
+              images.push(undefined);
+            }
           }
           x++;
         }
@@ -250,11 +271,12 @@
           arrayTweets.push({
             tweet: tweets[n].innerHTML,
             author: authors[n].innerHTML,
-            time: times[n].innerText,
+            time: times[n].textContent,
             image: extractImageUrl(images[n]),
             rt: rts[n],
             tid: tids[n],
-            permalinkURL: permalinksURL[n].href
+            permalinkURL: (permalinksURL[n] === undefined) ?
+                '' : permalinksURL[n].href
           });
           n++;
         }
@@ -267,10 +289,10 @@
             var dateString = formatterFunction(newDate, datetimeText);
             times[n].setAttribute('aria-label', dateString);
 
-            if (tweets[n].innerText) {
+            if (tweets[n].textContent) {
               // IE hack.
               if (supportsClassName) {
-                times[n].innerText = dateString;
+                times[n].textContent = dateString;
               } else {
                 var h = document.createElement('p');
                 var t = document.createTextNode(dateString);
@@ -305,13 +327,13 @@
               }
             }
           } else {
-            if (tweets[n].innerText) {
+            if (tweets[n].textContent) {
               if (printUser) {
-                op += '<p class="user">' + authors[n].innerText + '</p>';
+                op += '<p class="user">' + authors[n].textContent + '</p>';
               }
-              op += '<p class="tweet">' +  tweets[n].innerText + '</p>';
+              op += '<p class="tweet">' +  tweets[n].textContent + '</p>';
               if (printTime) {
-                op += '<p class="timePosted">' + times[n].innerText + '</p>';
+                op += '<p class="timePosted">' + times[n].textContent + '</p>';
               }
 
             } else {
