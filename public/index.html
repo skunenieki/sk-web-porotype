@@ -55,40 +55,47 @@
       <div class="container" style="display: none">
           <div class="row search">
               <div class="col-centered col-xs-10 col-md-8 col-lg-7">
-                    <!-- Single button -->
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        10km protokoli <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a href="/files/2015_10km_grupas_v3.pdf">Pa grupām</a></li>
-                        <li><a href="/files/2015_10km_kopvertejums_v3.pdf">Kopvērtējums</a></li>
-                      </ul>
-                    </div>
-                    <a class="btn btn-default btn-lg" href="/files/2015_velokross.pdf" role="button">Velokrosa protokoli</a>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Triatlona protokoli <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a href="/files/2015_tri_sieveites_v2.pdf">Sievietes pa grupām</a></li>
-                        <li><a href="/files/2015_tri_viriesi_v2.pdf">Vīrieši pa grupām</a></li>
-                        <li><a href="/files/2015_tri_komandas_v2.pdf">Komandu rezultāti</a></li>
-                      </ul>
-                    </div>
-                    <!-- <div class="form-group has-feedback inner-addon left-addon">
-                        <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
-                        <input type="search" class="form-control input-lg" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" placeholder="Vārds Uzvārds" aria-describedby="search-addon">
-                        <ul class="search-results" id="hits"></ul>
-                    </div>
-                    <div class="row start-search">
-                        <div class="col-xs-offset-3 col-xs-2 col-sm-offset-2">
-                            <img src="/arrow.png">
+
+                    <!-- Protokoli -->
+                    <!-- <div style="padding-bottom:10px;">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            10km protokoli <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="/files/2016/2016_10km_grupas_v3.pdf">Pa grupām</a></li>
+                            <li><a href="/files/2016/2016_10km_kopvertejums_v3.pdf">Kopvērtējums</a></li>
+                          </ul>
                         </div>
-                        <div class="col-xs-7 col-sm-8">
-                            <h3>Raksti savu vārdu lai atrastu rezultātu..</h3>
+                        <a class="btn btn-default btn-lg" href="/files/2016/2016_velokross.pdf" role="button">Velokrosa protokoli</a>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Triatlona protokoli <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a href="/files/2016/2016_tri_sieveites_v2.pdf">Sievietes pa grupām</a></li>
+                            <li><a href="/files/2016/2016_tri_viriesi_v2.pdf">Vīrieši pa grupām</a></li>
+                            <li><a href="/files/2016/2016_tri_komandas_v2.pdf">Komandu rezultāti</a></li>
+                          </ul>
                         </div>
                     </div> -->
+
+                    <!-- Algolia Search -->
+                    <div>
+                        <div class="form-group has-feedback inner-addon left-addon">
+                            <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                            <input type="search" class="form-control input-lg" name="q" id="q" autocomplete="off" spellcheck="false" autocorrect="false" placeholder="Vārds Uzvārds" aria-describedby="search-addon">
+                            <ul class="search-results" id="hits"></ul>
+                        </div>
+                        <div class="row start-search">
+                            <div class="col-xs-offset-3 col-xs-2 col-sm-offset-2">
+                                <img src="/arrow.png">
+                            </div>
+                            <div class="col-xs-7 col-sm-8">
+                                <h3>Raksti savu vārdu lai atrastu rezultātu..</h3>
+                            </div>
+                        </div>
+                    </div>
               </div>
           </div>
       </div>
@@ -188,7 +195,6 @@
                 <a target="_blank" href="http://devi.danfoss.com/latvia"><img class="lazy grayscale" id="logo-devi" data-original="/img/sponsors/devi.png" alt="Devi"></a>
                 <a target="_blank" href="http://www.lejasciems.lv/"><img class="lazy grayscale" id="logo-lpp" data-original="/img/sponsors/lpp.png" alt="LPP"></a>
                 <a target="_blank" href="http://www.mnl.lv/"><img class="lazy grayscale" id="logo-mnl" data-original="/img/sponsors/mnl.png" alt="MNL"></a>
-                <a target="_blank" href="http://www.salonsverdi.lv/"><img class="lazy grayscale" id="logo-veri" data-original="/img/sponsors/verdi.png" alt="Verdi"></a>
                 <a target="_blank" href="http://www.wilo.lv/"><img class="lazy grayscale" id="logo-wilo" data-original="/img/sponsors/wilo.png" alt="Wilo"></a>
                 <a target="_blank" href="http://www.witraktor.lv/"><img class="lazy grayscale" id="logo-witraktor" data-original="/img/sponsors/witraktor.png" alt="Witraktor"></a>
                 <a target="_blank" href="http://www.zemgus.lv/"><img class="lazy grayscale" id="logo-zemgus" data-original="/img/sponsors/zemgus.png" alt="Zemgus"></a>
@@ -206,7 +212,7 @@
             <div class="row">
                 <div class="col-xs-12 regulation">
                     <h1 class="uppercase">2016. gada nolikums</h1>
-                    <a class="btn btn-default btn-lg" href="/files/2016_SK_nolikums_V-3.pdf" role="button">Lejupielādēt Nolikumu</a>
+                    <a class="btn btn-default btn-lg" href="/files/2016/2016_SK_nolikums_V-4.pdf" role="button">Lejupielādēt Nolikumu</a>
                 </div>
             </div>
         </div>
@@ -479,9 +485,9 @@
 
     <script type="text/template" id="hit-template">
         <li class="hit">
-            <a>
+            <a href="#">
                 {{{ _highlightResult.name.value }}} ({{ birthYear }})<br>
-                <span>ŠK2015 rezultāts <strong>{{ result }}</strong>; Vieta grupā <strong>{{ rankInGroup }}</strong>, kopvērtējumā <strong>{{ rankInSummary }}.</strong></span>
+                <span>ŠK-{{ lastResult.eventYear }} rezultāts <strong>{{ lastResult.result }}</strong>; Vieta grupā <strong>{{ lastResult.rankInGroup }}</strong>, kopvērtējumā <strong>{{ lastResult.rankInSummary }}.</strong></span>
             </a>
         </li>
     </script>

@@ -86,11 +86,11 @@ $(window).load(function() {
     $('#preloader').delay(350).fadeOut('slow');
     $('section').show();
 
-    if (moment().diff('2016-08-13T11:00:00.000+0200', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
+    if (moment().diff('2016-08-13T11:00:00.000+0300', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
         $('section.intro .container').show();
         var $inputField = $('#q');
         var $hits       = $('#hits');
-        var algolia     = algoliasearch('01SR69EPVZ', '78c04ef3ca89dca87fc7bcc0a0179b90');
+        var algolia     = algoliasearch('CC17MMI337', '8df94aafc5d20cc8eb693a7c681cd585');
         var helper      = algoliasearchHelper(algolia, 'skunenieki', {
             hitsPerPage: 5,
             highlightPreTag: '<strong>',
@@ -122,7 +122,15 @@ $(window).load(function() {
         helper.on('result', function(content, state) {
             var hitsHtml = '';
             for (var i = 0; i < content.hits.length; ++i) {
-                hitsHtml += hitTemplate.render(content.hits[i]);
+                var item = content.hits[i];
+
+                var lastResultYear         = Math.max(...Object.keys(item.results));
+                item.lastResult           = item.results[lastResultYear];
+                item.lastResult.eventYear = lastResultYear;
+
+                console.log(item);
+
+                hitsHtml += hitTemplate.render(item);
             }
             if (content.hits.length === 0) {
                 hitsHtml = '<li class="no-hits"><a>Rezultāti nav pieejami.. :(</a></li>';
