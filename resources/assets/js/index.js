@@ -25,6 +25,10 @@ var hogan = require('hogan.js');
 var algoliasearch       = require('algoliasearch');
 var algoliasearchHelper = require('algoliasearch-helper');
 
+window.loadResults = function (id) {
+    console.log(id);
+}
+
 $(window).load(function() {
     twitterFetcher.fetch({
         id: '579257548878061568',
@@ -203,3 +207,4 @@ function createTimeCicles() {
     $('.textDiv_Minutes h4').html('Minūtes');
     $('.textDiv_Seconds h4').html('Sekundes');
 }
+
