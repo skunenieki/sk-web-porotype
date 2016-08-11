@@ -161,7 +161,7 @@ $(window).load(function() {
             $hits.html(hitsHtml);
         });
     // } else {
-    if (moment().diff('2016-08-11T16:22:00.000+0300', 'seconds') < 0) {
+    if (moment().diff('2016-08-13T11:00:00.000+0300', 'seconds') < 0) {
         createTimeCicles();
         countdown.delay(350).addClass('animated bounceIn');
 
