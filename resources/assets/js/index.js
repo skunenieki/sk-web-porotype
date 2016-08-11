@@ -26,7 +26,26 @@ var algoliasearch       = require('algoliasearch');
 var algoliasearchHelper = require('algoliasearch-helper');
 
 window.loadResults = function (id) {
-    console.log(id);
+    window.index.getObject(id, function(err, content) {
+
+        jQuery('#results-name').html(content.name + ' (' + content.birthYear + ')');
+
+        jQuery('#results-table-rows').html('');
+
+        // var keys = Object.keys(content.results);
+        for (var idx in content.results) {
+            jQuery('#results-table-rows').prepend(
+                '<tr>'+
+                    '<td>' + idx + '</td>' +
+                    '<td>' + content.results[idx].result + '</td>' +
+                    '<td>' + content.results[idx].group + '</td>' +
+                    '<td>' + content.results[idx].rankInGroup + '</td>' +
+                    '<td>' + content.results[idx].rankInSummary +'</td>' +
+                '</tr>'
+            );
+        }
+
+    });
 }
 
 $(window).load(function() {
@@ -101,6 +120,8 @@ $(window).load(function() {
             highlightPostTag: '</strong>',
         });
 
+        window.index = algolia.initIndex('skunenieki');
+
         var hitTemplate = hogan.compile($('#hit-template').text());
 
         $inputField.on('keyup', function() {
@@ -131,8 +152,6 @@ $(window).load(function() {
                 var lastResultYear         = Math.max(...Object.keys(item.results));
                 item.lastResult           = item.results[lastResultYear];
                 item.lastResult.eventYear = lastResultYear;
-
-                console.log(item);
 
                 hitsHtml += hitTemplate.render(item);
             }
