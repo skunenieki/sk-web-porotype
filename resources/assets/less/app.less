@@ -92,8 +92,7 @@ section {
 }
 
 section.intro {
-    // min-height: 512px;
-    min-height: 570px;
+    min-height: 590px;
     padding-top: 70px;
     // background-color: transparent;
     box-shadow: inset 0 0 0 1000px rgba(146, 215, 245, 0.17);
@@ -320,6 +319,22 @@ section.intro {
                 }
             }
         }
+
+        .btn-results {
+            .btn {
+                margin-bottom: 5px;
+            }
+
+            .btn,
+            .btn-group,
+            .dropdown-menu {
+                width: 100%;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
     }
 
     @media (min-width: @screen-sm-min) {
@@ -336,6 +351,16 @@ section.intro {
                 font-weight: 100;
                 font-size: 25px;
             }
+
+            .btn-results {
+                .btn-group {
+                    width: 49%;
+                }
+
+                .btn {
+                    margin-bottom: 5px;
+                }
+            }
         }
     }
 
@@ -347,8 +372,26 @@ section.intro {
         }
 
         .container {
+            padding-top: 45px;
+
             h3 {
                 font-size: 27px;
+            }
+
+            .btn-results {
+                .btn {
+                    margin-bottom: 0;
+                }
+
+                .btn,
+                .btn-group,
+                .dropdown-menu {
+                    width: auto;
+                }
+            }
+
+            .form-group {
+                margin-bottom: 15px;
             }
         }
     }
