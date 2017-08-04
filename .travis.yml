@@ -9,6 +9,7 @@ cache:
   yarn: true
   directories:
     - node_modules
+    - bower_components
     - $HOME/.yarn-cache
 
 git:
@@ -17,12 +18,10 @@ git:
 
 install:
 - npm i -g yarn
-- yarn install
-- ./node_modules/.bin/bower install
+- yarn install --production=false
 
 script:
-- ./node_modules/.bin/gulp icons --production
-- ./node_modules/.bin/gulp --production
+- yarn production
 
 deploy:
   provider: s3

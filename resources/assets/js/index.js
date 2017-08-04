@@ -12,10 +12,10 @@ var moment = require('moment');
 require('moment/locale/lv');
 moment.locale('lv');
 
-require('../../../bower_components/retina.js/dist/retina');
+require('retina.js');
 require('zepto.backstretch/zepto.backstretch.min');
 
-require('./twitter-fetcher');
+require('twitter-fetcher');
 require('./timecircles');
 
 var countdown =  $('#countdown');

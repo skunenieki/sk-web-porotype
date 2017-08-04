@@ -1,28 +1,30 @@
 {
   "private": true,
+  "scripts": {
+    "dev": "yarn development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "yarn production",
+    "production": "cross-env NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress --hide-modules --config=./node_modules/laravel-mix/setup/webpack.config.js"
+  },
   "dependencies": {
-    "algoliasearch": "^3.11.0",
-    "algoliasearch-helper": "^2.8.0",
-    "bootstrap": "^3.3.6",
-    "font-awesome": "^4.5.0",
+    "algoliasearch": "^3.24.0",
+    "algoliasearch-helper": "^2.21.0",
+    "animate.css": "^3.5.2",
+    "bootstrap": "^3.3.7",
+    "cross-env": "^5.0.3",
+    "font-awesome": "^4.7.0",
     "hogan.js": "^3.0.2",
     "jquery-lazyload": "^1.9.7",
-    "moment": "^2.9.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "moment": "^2.18.0",
+    "retina.js": "^1.1.0",
+    "twitter-fetcher": "^17.0.0",
+    "webpack-iconfont-plugin": "^0.0.2",
     "zepto.backstretch": "^2.1.2"
   },
   "devDependencies": {
-    "bower": "^1.3.12",
-    "browserify-shim": "~3.2.0",
-    "gulp": "^3.8.11",
-    "laravel-elixir": "^2.3",
-    "laravel-elixir-icons": "^1.0.1"
-  },
-  "browserify-shim": {
-    "jquery": "$"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
+    "laravel-mix": "^1.0"
   }
 }
