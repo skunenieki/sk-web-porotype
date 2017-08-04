@@ -3,8 +3,7 @@
 /public/build/
 /public/fonts/
 /node_modules/
-/bower_components/
 /skunenieki.github.io/
-/resources/assets/sass/_icon-font.scss
+/resources/assets/sass/icon-font.scss
 npm-debug.log
 .DS_Store
