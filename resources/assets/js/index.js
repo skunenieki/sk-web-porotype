@@ -77,7 +77,7 @@ $(window).load(function() {
                 html += '<div class="media-body">';
                 html += '<h4 class="media-heading">';
                 html += '<a href="' + el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].href + '">';
-                html += el.getElementsByClassName('user')[0].getElementsByTagName('a')[0].getElementsByTagName('span')[1].innerHTML;
+                html += el.getElementsByClassName('user')[0].getElementsByTagName('div')[0].getElementsByTagName('a')[0].getElementsByTagName('span')[0].getElementsByTagName('span')[0].innerHTML;
                 html += '</a>';
                 html += '</h4>';
                 html += '<div class="timline-time"><small class="text-muted"><i class="fa fa-clock-o"></i> ';
@@ -161,7 +161,7 @@ $(window).load(function() {
             $hits.html(hitsHtml);
         });
     // } else {
-    if (moment().diff('2017-08-12T11:00:00.000+0300', 'seconds') < 0) {
+    if (moment().diff('2018-08-12T11:00:00.000+0300', 'seconds') < 0) {
         createTimeCicles();
         countdown.delay(350).addClass('animated bounceIn');
 
