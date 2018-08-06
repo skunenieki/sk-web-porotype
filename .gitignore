@@ -2,6 +2,8 @@
 /public/css/
 /public/build/
 /public/fonts/
+/public/hot
+/public/mix-manifest.json
 /node_modules/
 /skunenieki.github.io/
 /resources/assets/sass/icon-font.scss
