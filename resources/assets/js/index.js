@@ -202,6 +202,10 @@ jQuery('.gallery-box').on('click', function() {
     ga('send', 'event', 'gallery', 'click');
 });
 
+jQuery('#nolikums').on('click', function() {
+    ga('send', 'event', 'nolikums', 'click');
+});
+
 $(function () {
     var parent = $(".sponsors .shuffle");
     var sponsorLogos = parent.children();
