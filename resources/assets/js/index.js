@@ -158,6 +158,7 @@ $(window).load(function() {
             if (content.hits.length === 0) {
                 hitsHtml = '<li class="no-hits"><a>Rezultāti nav pieejami.. :(</a></li>';
             }
+            hitsHtml += '<li class="algolia-logo"><img src="/img/algolia.svg"></li>';
             $hits.html(hitsHtml);
         });
     // } else {
