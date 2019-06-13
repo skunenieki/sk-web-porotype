@@ -48,9 +48,11 @@ window.loadResults = function (id) {
     });
 }
 
-$(window).load(function() {
+$(window).on('load', function() {
     twitterFetcher.fetch({
-        id: '579257548878061568',
+        // id: '579257548878061568',
+        profile: {
+            screenName: 'skunenieki'},
         domId: 'timeline',
         maxTweets: 5,
         enableLinks: true,
