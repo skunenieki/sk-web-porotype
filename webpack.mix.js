@@ -3,7 +3,9 @@ let IconfontPlugin = require('webpack-iconfont-plugin');
 
 mix.setPublicPath('public/')
    .js('resources/assets/js/index.js', 'js/')
-   .less('resources/assets/less/app.less', 'css/')
+   .less('resources/assets/less/app.less', 'css/', {
+        javascriptEnabled: true
+   })
    .sass('resources/assets/sass/icon-font.scss', 'css/')
    .webpackConfig({
      plugins: [
