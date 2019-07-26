@@ -111,7 +111,7 @@ $(window).on('load', function() {
     $('#preloader').delay(350).fadeOut('slow');
     $('section').show();
 
-    if (moment().diff('2019-08-11T11:00:00.000+0300', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
+    // if (moment().diff('2019-08-11T11:00:00.000+0300', 'seconds') > 0 || window.location.href.indexOf('algolia') !== -1) {
         $('section.intro .container').show();
         var $inputField = $('#q');
         var $hits       = $('#hits');
@@ -163,8 +163,8 @@ $(window).on('load', function() {
             hitsHtml += '<li class="algolia-logo"><img src="/img/algolia.svg"></li>';
             $hits.html(hitsHtml);
         });
-    }
-    // } else {
+    // }
+
     if (moment().diff('2019-08-11T11:00:00.000+0300', 'seconds') < 0) {
         createTimeCicles();
         countdown.delay(350).addClass('animated bounceIn');
