@@ -83,7 +83,7 @@ window.loadResults = function (id) {
             data: {
                 labels: chartLabels,
                 datasets: [{
-                    label: 'Laiks',
+                    label: 'Rezultāts',
                     data: chartTimes,
                     borderColor: [
                         'rgb(75, 192, 192)'
