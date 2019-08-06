@@ -115,7 +115,7 @@ $(window).on('load', function() {
         $('section.intro .container').show();
         var $inputField = $('#q');
         var $hits       = $('#hits');
-        var algolia     = algoliasearch('CC17MMI337', '8df94aafc5d20cc8eb693a7c681cd585');
+        var algolia     = algoliasearch('11X587TMXX', 'ae23277fdfd08d42c4e83b673f79c536');
         var helper      = algoliasearchHelper(algolia, 'skunenieki', {
             hitsPerPage: 5,
             highlightPreTag: '<strong>',
