@@ -7,6 +7,7 @@ $(function() {
 });
 
 require('bootstrap/js/modal');
+require('bootstrap/js/modal');
 require('bootstrap/js/dropdown');
 var moment = require('moment');
 require('moment/locale/lv');
@@ -25,15 +26,46 @@ var hogan = require('hogan.js');
 var algoliasearch       = require('algoliasearch');
 var algoliasearchHelper = require('algoliasearch-helper');
 
-window.loadResults = function (id) {
-    window.index.getObject(id, function(err, content) {
+var Chart = require('chart.js');
 
+var currentYear = new Date().getFullYear();
+var chartLabels = [];
+for (var i = 1996; i <= currentYear; ++i) {
+    chartLabels.push(i);
+}
+
+window.loadResults = function (id) {
+    if (typeof window.myChart !== 'undefined') {
+        window.myChart.destroy();
+    };
+
+    window.index.getObject(id, function(err, content) {
         jQuery('#results-name').html(content.name + ' (' + content.birthYear + ')');
 
         jQuery('#results-table-rows').html('');
 
-        // var keys = Object.keys(content.results);
+        var chartTimes = [];
+        for (var i = 1996; i <= currentYear; ++i) {
+            if (typeof content.results[i] !== 'undefined') {
+                if (content.results[i].resultInSeconds > 10800) {
+                    // If result is more than 3 hours, most likely the participant was DSQ or DNF.
+                    chartTimes.push(null);
+                } else {
+                    chartTimes.push(content.results[i].resultInSeconds);
+                }
+            } else {
+                chartTimes.push(null);
+            }
+        }
+
         for (var idx in content.results) {
+            // If result is more than 3 hours, most likely the participant was DSQ or DNF.
+            if (content.results[idx].resultInSeconds > 10800) {
+                content.results[idx].result = '-';
+                content.results[idx].rankInGroup = '-';
+                content.results[idx].rankInSummary = '-';
+            }
+
             jQuery('#results-table-rows').prepend(
                 '<tr>'+
                     '<td>' + idx + '</td>' +
@@ -45,6 +77,59 @@ window.loadResults = function (id) {
             );
         }
 
+        var ctx = document.getElementById('charContainer');
+        window.myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Laiks',
+                    data: chartTimes,
+                    borderColor: [
+                        'rgb(75, 192, 192)'
+                    ],
+                    borderWidth: 2,
+                    fill :false,
+                    yAxisID: 'y-axis-1',
+                }]
+            },
+            options: {
+                tooltips: {
+                    callbacks: {
+                        label: function (item) {
+                            return moment("2000-01-01").startOf('day')
+                                .seconds(item.value)
+                                .format('HH:mm:ss');
+                        }
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        id: 'y-axis-1',
+                        ticks: {
+                            // beginAtZero: false,
+                            min: 600,
+                            stepSize: 120,
+                            callback: function(value, index, values) {
+                                return moment("2000-01-01").startOf('day')
+                                    .seconds(value)
+                                    .format('HH:mm:ss');
+                            }
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }]
+                },
+                elements: {
+                    line: {
+                        tension: 0 // disables bezier curves
+                    }
+                }
+            }
+        });
     });
 }
 

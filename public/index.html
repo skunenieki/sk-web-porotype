@@ -482,6 +482,9 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <h3 id="results-name"></h3>
+                            <div id="chartContainer">
+                                <canvas id="charContainer" width="400" height="200"></canvas>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-condensed table-hover">
                                     <thead>
@@ -510,7 +513,6 @@
         <li class="hit">
             <a data-toggle="modal" data-target="#resultsModal" onclick="loadResults({{objectID}})">
                 {{{ _highlightResult.name.value }}} ({{ birthYear }})<br>
-                <span>ŠK-{{ lastResult.eventYear }} rezultāts <strong>{{ lastResult.result }}</strong>; Vieta grupā <strong>{{ lastResult.rankInGroup }}</strong>, kopvērtējumā <strong>{{ lastResult.rankInSummary }}.</strong></span>
             </a>
         </li>
     </script>
