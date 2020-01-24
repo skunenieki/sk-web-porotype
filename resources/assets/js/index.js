@@ -250,7 +250,7 @@ $(window).on('load', function() {
         });
     // }
 
-    if (moment().diff('2019-08-11T11:00:00.000+0300', 'seconds') < 0) {
+    if (moment().diff('2020-08-08T11:00:00.000+0300', 'seconds') < 0) {
         createTimeCicles();
         countdown.delay(350).addClass('animated bounceIn');
 
