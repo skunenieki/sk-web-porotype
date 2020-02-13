@@ -21,8 +21,9 @@
     "less": "^3.9",
     "less-loader": "^5.0",
     "moment": "^2.18.0",
+    "moment-timezone": "^0.5.27",
     "retina.js": "^1.1.0",
-    "twitter-fetcher": "^18.0.2",
+    "twitter-fetcher": "^18.0.4",
     "webpack-iconfont-plugin": "^0.0.2",
     "zepto.backstretch": "^2.1.2"
   },

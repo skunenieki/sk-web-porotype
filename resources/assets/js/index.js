@@ -9,7 +9,7 @@ $(function() {
 require('bootstrap/js/modal');
 require('bootstrap/js/modal');
 require('bootstrap/js/dropdown');
-var moment = require('moment');
+var moment = require('moment-timezone');
 require('moment/locale/lv');
 moment.locale('lv');
 
@@ -137,7 +137,8 @@ $(window).on('load', function() {
     twitterFetcher.fetch({
         // id: '579257548878061568',
         profile: {
-            screenName: 'skunenieki'},
+            screenName: 'skunenieki',
+        },
         domId: 'timeline',
         maxTweets: 5,
         enableLinks: true,
@@ -152,6 +153,8 @@ $(window).on('load', function() {
             var el = document.createElement('div');
             while (n < x) {
                 el.innerHTML = tweets[n];
+
+                console.log(el.getElementsByClassName('timePosted')[0].innerHTML);
 
                 html += '<li class="' + (n%2 === 0 ? 'pos-right' : 'pos-left') + ' clearfix">';
                 html += '<div class="timeline-badge"><i class="fa fa-twitter"></i></div>';
@@ -181,7 +184,7 @@ $(window).on('load', function() {
             element.innerHTML = html;
         },
         dateFunction: function(newDate, datetimeText) {
-            return moment(newDate).format('LLL');
+            return moment(newDate).add(2, 'hour').tz('Europe/Riga').format('LLL');
         }
     });
 
