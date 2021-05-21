@@ -1,22 +1,15 @@
 language: node_js
 
 node_js:
-  - node
+  - 15
 
 sudo: false
-
-cache:
-  yarn: true
-  directories:
-    - node_modules
-    - $HOME/.yarn-cache
 
 git:
   submodules: false
   depth: 10
 
 install:
-- npm i -g yarn
 - yarn install
 
 script:
