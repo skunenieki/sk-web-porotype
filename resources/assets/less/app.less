@@ -91,10 +91,7 @@ section {
 }
 
 section.intro {
-    min-height: 520px;
-    // height: 765px;
     padding-top: 70px;
-    // background-color: transparent;
     box-shadow: inset 0 0 0 1000px rgba(146, 215, 245, 0.17);
     .at2x('/img/new_bg.jpg', cover);
     background-repeat: no-repeat;
@@ -103,6 +100,9 @@ section.intro {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
 
     h1 {
         font-size: 70px;
@@ -1068,10 +1068,12 @@ section.footer {
     background: @theme-color-dark;
     text-align: center;
     padding: 10px 0 20px 0;
-    position: relative;
+    position: fixed;
     font-size: 18px;
     color: #909090;
     padding-top: 20px;
+    bottom: 0;
+    width: 100%;
 
     .copy {
         font-size: 12px;
